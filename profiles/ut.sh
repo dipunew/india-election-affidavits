@@ -5,7 +5,8 @@ do
   mkdir -p "raw/U${ut}"
 
   if ! [ -f "raw/U${ut}/index.html" ]; then
-    curl "https://affidavit.eci.gov.in/allConstList/U${ut}/24/PC/46%20/GENERAL" -o "raw/U${ut}/index.html"
+    # Update the electionType value to reflect the latest General Assembly election or any other election type
+    curl "https://affidavit.eci.gov.in/allConstList/U${ut}/26/AC/50/GENERAL" -o "raw/U${ut}/index.html"
     sleep 3
   fi
 
@@ -19,7 +20,7 @@ do
     while [[ $candidates == 10 ]]
     do
       if ! [ -f "raw/U${ut}/${constituency}/${page}.html" ]; then
-        curl "https://affidavit.eci.gov.in/CandidateCustomFilter?electionType=24-PC-GENERAL-1-46&election=24-PC-GENERAL-1-46&states=U${ut}&constId=${constituency}&submitName=100&page=${page}" -o "raw/U${ut}/${constituency}/${page}.html"
+        curl "https://affidavit.eci.gov.in/CandidateCustomFilter?electionType=26-AC-GENERAL-3-50&election=26-AC-GENERAL-3-50&states=U${ut}&constId=${constituency}&submitName=100&page=${page}" -o "raw/U${ut}/${constituency}/${page}.html"
         sleep 3
       fi
 
